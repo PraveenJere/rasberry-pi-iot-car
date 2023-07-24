@@ -85,10 +85,10 @@ def eye_aspect_ratio(eye):
 EYE_CLOSED_COUNTER = 0
 
 config = {
-  "apiKey": "AIzaSyCXw8rIHYKQvDsXaK8CCm2-7L5PamYbBXQ",
-  "authDomain": "iot-car-dashboard-b5e3a.firebaseapp.com",
-  "databaseURL": "https://iot-car-dashboard-b5e3a-default-rtdb.firebaseio.com/",
-  "storageBucket": "iot-car-dashboard-b5e3a.appspot.com"
+  "apiKey": "AIzaSyDY32VfHaipBMFSoFgizVQ8qievLxaMkZQ",
+  "authDomain": "iot-car-dashboard-2-default-rtdb.firebaseio.com",
+  "databaseURL": "https://iot-car-dashboard-2-default-rtdb.firebaseio.com/",
+  "storageBucket": "iot-car-dashboard-2.appspot.com"
 }
 
 firebase = pyrebase.initialize_app(config)
