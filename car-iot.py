@@ -62,7 +62,7 @@ GPIO.setup(headlight_pin, GPIO.IN)
 
 #
 
-FACIAL_LANDMARK_PREDICTOR = "/home/pi/mu_code/shape_predictor_68_face_landmarks.dat"  # path to dlib's pre-trained facial landmark predictor
+FACIAL_LANDMARK_PREDICTOR = "/home/pi/Desktop/shape_predictor_68_face_landmarks.dat"  # path to dlib's pre-trained facial landmark predictor
 MINIMUM_EAR = 0.2    # Minimum EAR for both the eyes to mark the eyes as open
 MAXIMUM_FRAME_COUNT = 10
 
