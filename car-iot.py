@@ -62,7 +62,7 @@ GPIO.setup(headlight_pin, GPIO.IN)
 
 #
 
-FACIAL_LANDMARK_PREDICTOR = "/home/pi/Desktop/shape_predictor_68_face_landmarks.dat"  # path to dlib's pre-trained facial landmark predictor
+FACIAL_LANDMARK_PREDICTOR = "/home/pi/Desktop/rasberry-pi-iot-car/shape_predictor_68_face_landmarks.dat"  # path to dlib's pre-trained facial landmark predictor
 MINIMUM_EAR = 0.2    # Minimum EAR for both the eyes to mark the eyes as open
 MAXIMUM_FRAME_COUNT = 10
 
@@ -97,17 +97,6 @@ db = firebase.database()
 print("Send Data to Firebase Using Raspberry Pi")
 print("----------------------------------------")
 print()
-
-acc = "low"
-brake = "low"
-seatbelt = False
-bpm = 0
-voice = "idle"
-alcohol = False
-steering = True
-left_in = False
-right_in = False
-headlight = False
 
 
 def earCalculation():
@@ -153,6 +142,17 @@ def earCalculation():
 
 
 def parametersCalculation():
+    acc = "low"
+    brake = "low"
+    seatbelt = False
+    bpm = 0
+    voice = "idle"
+    alcohol = False
+    steering = True
+    left_in = False
+    right_in = False
+    headlight = False
+
     while True:
     # acc calc
         if((GPIO.input(acc_pin1) == 1) and (GPIO.input(acc_pin2) == 0) and (GPIO.input(acc_pin3) == 0)):
@@ -176,17 +176,17 @@ def parametersCalculation():
             brake = "idle"
 
         # seatbelt calc
-        if(GPIO.input(seatbelt_pin) == 0):
+        if(GPIO.input(seatbelt_pin) == 1):
             seatbelt = True
             GPIO.output(motor_pin, False)
-        elif(GPIO.input(seatbelt_pin) == 1):
+        elif(GPIO.input(seatbelt_pin) == 0):
             seatbelt = False
             GPIO.output(motor_pin, True)
 
         # bpm calc
-        if(GPIO.input(bpm_pin) == 0):
+        if(GPIO.input(bpm_pin) == 1):
             bpm = random.randint(72,81)
-        elif(GPIO.input(bpm_pin) == 1):
+        elif(GPIO.input(bpm_pin) == 0):
             bpm = 0
 
         # voice calc
@@ -200,33 +200,33 @@ def parametersCalculation():
             voice = "idle"
 
         # alcohol calc
-        if(GPIO.input(alcohol_pin) == 0):
+        if(GPIO.input(alcohol_pin) == 1):
             alcohol = False
-        elif(GPIO.input(alcohol_pin) == 1):
+        elif(GPIO.input(alcohol_pin) == 0):
             alcohol = True
 
         # steering calc
-        if(GPIO.input(steering_pin) == 0):
+        if(GPIO.input(steering_pin) == 1):
             steering = True
-        elif(GPIO.input(steering_pin) == 1):
+        elif(GPIO.input(steering_pin) == 0):
             steering = False
 
         # left-in calc
-        if(GPIO.input(left_in_pin) == 0):
+        if(GPIO.input(left_in_pin) == 1):
             left_in = False
-        elif(GPIO.input(left_in_pin) == 1):
+        elif(GPIO.input(left_in_pin) == 0):
             left_in = True
 
         # right-in calc
-        if(GPIO.input(right_in_pin) == 0):
+        if(GPIO.input(right_in_pin) == 1):
             right_in = False
-        elif(GPIO.input(right_in_pin) == 1):
+        elif(GPIO.input(right_in_pin) == 0):
             right_in = True
 
         # headlight calc
-        if(GPIO.input(headlight_pin) == 0):
+        if(GPIO.input(headlight_pin) == 1):
             headlight = False
-        elif(GPIO.input(headlight_pin) == 1):
+        elif(GPIO.input(headlight_pin) == 0):
             headlight = True
 
         data = {
